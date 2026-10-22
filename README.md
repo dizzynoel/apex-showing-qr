@@ -16,12 +16,15 @@ Every page is exactly 6.00" × 6.00". Print at **Actual size / 100%**, never "Fi
 
 1. Add a row per new unit to `units.csv` with that month in `batch` (e.g. `2026-11`).
    - `showmojo_id` is the 10-character id in the listing's link: `showmojo.com/l/`**`46e62a80a6`**. Public list of current listings: <https://showmojo.com/f22f13606a/listings/mapsearch>
+   - No ShowMojo link yet? Add the row anyway with `showmojo_id` blank and a `note`. It shows up in `MISSING.md` until the id is filled in.
    - When a unit leases and its sign comes down, set `active` to `no` (keep the row so its history stays).
 2. Run `python3 build.py` (needs `pip install qrcode reportlab pillow`).
 3. Commit. `print/<YYYY-MM>.pdf` is the new batch to send to print.
 
 ## Where the units came from
 
-Batch `2026-10` (built 21 Oct 2026): the 25 units listed on AppFolio's public listings page (theapexteam.appfolio.com/listings) that day, matched to their ShowMojo listing ids. 23 matched. No ShowMojo link was found for **1211 E 9th St Apt 1** or **1402 E Manlove St Unit 59**; add them when their ids are known.
+Batch `2026-10` (built 21 Oct 2026): the 25 units listed on AppFolio's public listings page (theapexteam.appfolio.com/listings) that day, matched to their ShowMojo listing ids. 23 matched.
+
+**Units without a ShowMojo link** stay in `units.csv` with the id blank and a note. Every build lists them in [`MISSING.md`](MISSING.md), so they can't be forgotten. As of 21 Oct 2026: **1211 E 9th St Apt 1** and **1402 E Manlove St Unit 59**.
 
 All 23 codes were checked with two scanner engines (OpenCV and ZXing, the engine behind many phone scanners).
